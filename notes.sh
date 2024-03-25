@@ -11,5 +11,8 @@ echo -e "\nEnter notes\n"
 
 read INPUT
 INSERT_NOTES=$($PSQL "INSERT INTO notepad(notes) values('$INPUT');")
-
-echo $INSERT_NOTES
+NOTES_ID=$($PSQL "SELECT id FROM notepad WHERE notes='$INPUT'")
+if [[ $INSERT_NOTES == 'INSERT 0 1' ]]
+    then
+    echo notes $NOTES_ID is entered into the system
+fi
