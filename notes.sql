@@ -27,7 +27,7 @@ SET default_table_access_method = heap;
 CREATE TABLE public.notepad (
     id integer NOT NULL,
     notes text NOT NULL,
-    "timestamp" date DEFAULT CURRENT_DATE NOT NULL
+    "timestamp" timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
 
@@ -67,6 +67,7 @@ ALTER TABLE ONLY public.notepad ALTER COLUMN id SET DEFAULT nextval('public.note
 --
 
 COPY public.notepad (id, notes, "timestamp") FROM stdin;
+1	eat food	2024-03-25 11:09:58.271348-04
 \.
 
 
@@ -74,7 +75,7 @@ COPY public.notepad (id, notes, "timestamp") FROM stdin;
 -- Name: notepad_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylestech95
 --
 
-SELECT pg_catalog.setval('public.notepad_id_seq', 1, false);
+SELECT pg_catalog.setval('public.notepad_id_seq', 1, true);
 
 
 --
